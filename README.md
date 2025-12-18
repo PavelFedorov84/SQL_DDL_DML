@@ -37,3 +37,18 @@
 `LIMIT 1;`
 
 ![Скриншот-3](https://github.com/MeSeurus/sys-pattern-homework/blob/main/img/screen_32.png)
+
+UPD:
+Исправленный вариант:
+
+`SELECT EXTRACT(YEAR FROM payment_date) AS payment_year, EXTRACT(MONTH FROM payment_date) AS payment_month, SUM(amount) AS total_amount,  Count(*) AS rental_count`
+`FROM sakila.payment`
+`GROUP BY payment_year, payment_month`
+`ORDER BY total_amount DESC`
+`LIMIT 1;`
+
++--------------+---------------+--------------+--------------+
+| payment_year | payment_month | total_amount | rental_count |
++--------------+---------------+--------------+--------------+
+|         2005 |             7 |     28368.91 |         6709 |
++--------------+---------------+--------------+--------------+
