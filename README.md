@@ -1,82 +1,50 @@
-# Домашнее задание к занятию "Система мониторинга Zabbix" - `Молоствов Андрей`
-
----
+# Домашнее задание к занятию "13.Системы мониторинга" - `Молоствов Андрей`
 
 ### Задание 1
-Используемые команды указаны ниже
-```
-Поле для вставки кода...
 
-apt-get install postgresql
+Учитывая описание (платформа HTTP, вычисления с отчетами на диск, ЦПУ интенсивно используется), я бы выделил следующие четыре категории минимальных метрик:
 
-wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian12_all.deb
+1) Бизнес-метрики (качество сервиса):
 
-dpkg -i zabbix-release_latest_6.0+debian12_all.deb
+*HTTP запросы: Общее количество, по методам (GET/POST), по эндпоинтам.
 
-apt update
+*HTTP коды ответа: Группировка по классам (2xx, 3xx, 4xx, 5xx), особенно rate ошибок 5xx и 4xx. Это прямой индикатор доступности и корректности работы API.
 
-apt install zabbix-server-pgsql zabbix-frontend-php php8.2-pgsql zabbix-apache-conf zabbix-sql-scripts
+*Задержка (Latency) запросов: Процентили времени ответа (p50, p95, p99). Показывает, насколько отзывчив сервис для пользователей.
 
-su - postgres -c 'psql --command "CREATE USER zabbix WITH PASSWORD
-'\'123456789\'';"'
+2) Метрики ресурсов (инфраструктура):
 
-su - postgres -c 'psql --command "CREATE DATABASE zabbix OWNER zabbix;"'
+*ЦПУ (CPU): Утилизация на ядро и в целом, время ожидания (steal, iowait если есть), load average (CPU la). Это критично, так как вычисления нагружают процессор.
 
-nano file /etc/zabbix/zabbix_server.conf
+*Оперативная память (RAM): Общее использование, свободная память, использование кэша, процент использования. Позволяет избежать OOM (Out-Of-Memory) убийств процессов.
 
-systemctl restart zabbix-server apache2![4](https://github.com/user-attachments/assets/a7c107b0-64c1-4a10-84b0-2323f7b4cc40)
+*Диск (Disk): Свободное место на разделах, где сохраняются отчеты и где работает приложение. I/O утилизация (чтение/запись) и latency. Если отчеты пишутся на диск, его перегрузка может стать узким местом.
 
-systemctl enable zabbix-server apache2
+*Inodes (иноды): Свободные иноды на диске с отчетами. Если приложение создает множество мелких файлов (отчетов, логов), их может закончиться даже при свободном месте.
 
-https://192.168.123.3/zabbix
+3) Метрики приложения (логика работы):
 
-```
+*Количество активных/обрабатываемых вычислительных задач.
 
-`При необходимости прикрепитe сюда скриншоты
-![Adminka](https://github.com/user-attachments/assets/78d6c9af-58a3-4249-be3e-f7f3b2e56302)
+*Среднее время генерации отчета.
 
+*Очередь задач (если есть).
 
+4) Метрики доступности:
 
-`
-
-
----
+*Простое «up/down» сервиса по HTTP-проверке (например, запрос на /health).
 
 ### Задание 2
 
-Только заметил, что установлен старый VMBox и нет в сети выбора нескольких адаптеров, чтобы соединить 2 хоста на zabbix server, так как указать не могу, могу прокомментрировать принцип подключения: 
-1) установка zabbix-agent на 2-ю VM с официального сайта zabbix
-2) изменить в /etc/zabbix/zabbix_server.conf Server= 192.168.123.0/24 - указав подсеть 2-х хостов.
-3) по принципу установки zabbix-agent на VM zabbix server - добавить новый узел, добавить одну общую группу и шаблон , указать IP VM и оставить порт по дефолту.
-Прикладываю снизу скриншот настроек VMBox.
 
 ```
-Поле для вставки кода...
 
-wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian12_all.deb
-
-dpkg -i zabbix-release_latest_6.0+debian12_all.deb
-
-apt update
-
-apt install zabbix-agent
-
-systemctl restart zabbix-agent
-
-systemctl enable zabbix-agent
-
-cat /vat/log/zabbix/zabbix_agentd.log
 ```
 
-`При необходимости прикрепитe сюда скриншоты
-![Hosts](https://github.com/user-attachments/assets/d148e046-2b9d-4546-bc51-c613f5da4bba)
-![Logi](https://github.com/user-attachments/assets/2cdb909b-0691-4856-b282-85955bcd7557)
-![Latest Data](https://github.com/user-attachments/assets/e065fbd4-ff36-4b5d-87a9-f5d5a38d458a)
+### Задание 3
 
+### Задание 4
 
+### Задание 5
 
-
-
-
-
-....
+### Задание 6
