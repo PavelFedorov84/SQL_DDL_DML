@@ -40,8 +40,21 @@ kubectl exec -n app $FRONTEND_POD -- timeout 3 curl -v http://cache.app.svc.clus
 ### Тестируем разрешенные соединения
 <img width="1160" height="550" alt="image" src="https://github.com/user-attachments/assets/edfabcb0-d0ec-488a-846b-dda3e0a2724d" />
 
+
+
+<img width="1156" height="495" alt="image" src="https://github.com/user-attachments/assets/2bc0b7e1-dddf-493e-b477-75c938a45495" />
+
+
 <img width="1143" height="498" alt="image" src="https://github.com/user-attachments/assets/8ff8fcd2-5453-4499-9d82-fd4bdcc164b0" />
+
+
+
+<img width="1136" height="502" alt="image" src="https://github.com/user-attachments/assets/da9fe647-7526-4170-ace5-79d365a5a315" />
 
 ### Тестируем запрещенные соединения
 
-<img width="1165" height="228" alt="image" src="https://github.com/user-attachments/assets/424ac313-e786-4329-a2cc-78ff4857ee61" />
+<img width="1183" height="160" alt="image" src="https://github.com/user-attachments/assets/b9fd68fa-156b-4cb1-9504-dc7fcec0abfe" />
+
+<img width="1169" height="154" alt="image" src="https://github.com/user-attachments/assets/dd945c90-e645-412f-b5ee-f3e1607c75c5" />
+
+
