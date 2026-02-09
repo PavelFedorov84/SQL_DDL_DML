@@ -1,4 +1,4 @@
-TABLE_NAME         |  primary_key_columns
+Название таблицы   |  Название первичного ключа
 actor              |  actor_id             
 address            |  address_id
 category           |  category_id
