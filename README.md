@@ -15,13 +15,23 @@
 '![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.3.jpg)`
 
 
+1.4. `Дайте все права для пользователя sys_temp.`
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.4.jpg)`
 
+1.5. `Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)`
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.5.jpg)`
 
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.5.2.jpg)`
 
-4. `Заполните здесь этапы выполнения, если требуется ....`
-5. `Заполните здесь этапы выполнения, если требуется ....`
-6. 
+1.6. 'Переподключитесь к базе данных от имени sys_temp.'
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.6.jpg)`
 
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.6.2.jpg)`
+
+1.7. 'Восстановите дамп в базу данных.'
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.7.jpg)`
+
+'![](https://github.com/PavelFedorov84/SQL_DDL_DML/blob/main/img/S.1.7.2.jpg)`
 ```
 Поле для вставки кода...
 ....
